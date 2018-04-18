@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>zengxiaotao&#39;s personal blog</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2018-04-18T02:53:10.769Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>zengxiaotao</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2018/04/18/hello-world/"/>
+    <id>http://yoursite.com/2018/04/18/hello-world/</id>
+    <published>2018-04-18T02:18:32.906Z</published>
+    <updated>2018-04-18T02:53:10.769Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><a id="more"></a><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>解决hexo Cannot find module &#39;./build/Release/DTraceProviderBindings&#39; 问题</title>
+    <link href="http://yoursite.com/2018/04/17/%E8%A7%A3%E5%86%B3hexo-cannot-find-module-%E9%97%AE%E9%A2%98/"/>
+    <id>http://yoursite.com/2018/04/17/解决hexo-cannot-find-module-问题/</id>
+    <published>2018-04-17T10:56:16.000Z</published>
+    <updated>2018-04-18T03:06:49.490Z</updated>
+    
+    <content type="html"><![CDATA[<p>大概是去年的某一天，执行 <code>hexo s</code> 命令时，会输出下面的错误：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123; [Error: Cannot find module <span class="string">'./build/Release/DTraceProviderBindings'</span>] code: <span class="string">'MODULE_NOT_FOUND'</span> &#125;    </span><br><span class="line">&#123; [Error: Cannot find module <span class="string">'./build/default/DTraceProviderBindings'</span>] code: <span class="string">'MODULE_NOT_FOUND'</span> &#125;</span><br><span class="line">&#123; [Error: Cannot find module <span class="string">'./build/Debug/DTraceProviderBindings'</span>] code: <span class="string">'MODULE_NOT_FOUND'</span> &#125;</span><br></pre></td></tr></table></figure><p>甚至在 <code>hexo -v</code> 的时候也会出现，但是它只是输出这一段错误，并不影响使用，网上简单的查了一下，改一下 node 版本到v5以下，问题也就解决了。</p><p>但是做其他事情的时候，又得切换回高版本的 node ，每天都得 <code>nvm current</code>, <code>nvm ls</code> , <code>nvm use</code> 来回几遍，着实烦。</p><a id="more"></a><p>这次把站点重新弄了一遍后，这个问题还是存在，<a href="">官方</a>提供的解决方法</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli --no-optional</span><br></pre></td></tr></table></figure><p>网上包括我自己实际尝试后依然没有解决。</p><p>查了几天资料之后，发现卸载 <code>dtrace-provider</code> 这个模块就行了</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install dtrace-provider -g</span><br></pre></td></tr></table></figure><p>之后，重新执行 hexo 命令，错误信息就不会再出现了</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;大概是去年的某一天，执行 &lt;code&gt;hexo s&lt;/code&gt; 命令时，会输出下面的错误：&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123; [Error: Cannot find module &lt;span class=&quot;string&quot;&gt;&#39;./build/Release/DTraceProviderBindings&#39;&lt;/span&gt;] code: &lt;span class=&quot;string&quot;&gt;&#39;MODULE_NOT_FOUND&#39;&lt;/span&gt; &amp;#125;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123; [Error: Cannot find module &lt;span class=&quot;string&quot;&gt;&#39;./build/default/DTraceProviderBindings&#39;&lt;/span&gt;] code: &lt;span class=&quot;string&quot;&gt;&#39;MODULE_NOT_FOUND&#39;&lt;/span&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123; [Error: Cannot find module &lt;span class=&quot;string&quot;&gt;&#39;./build/Debug/DTraceProviderBindings&#39;&lt;/span&gt;] code: &lt;span class=&quot;string&quot;&gt;&#39;MODULE_NOT_FOUND&#39;&lt;/span&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;甚至在 &lt;code&gt;hexo -v&lt;/code&gt; 的时候也会出现，但是它只是输出这一段错误，并不影响使用，网上简单的查了一下，改一下 node 版本到v5以下，问题也就解决了。&lt;/p&gt;
+&lt;p&gt;但是做其他事情的时候，又得切换回高版本的 node ，每天都得 &lt;code&gt;nvm current&lt;/code&gt;, &lt;code&gt;nvm ls&lt;/code&gt; , &lt;code&gt;nvm use&lt;/code&gt; 来回几遍，着实烦。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+  </entry>
+  
+</feed>
