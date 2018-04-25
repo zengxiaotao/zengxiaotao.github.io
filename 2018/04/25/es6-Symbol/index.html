@@ -102,18 +102,18 @@
 
 
 
-  <meta name="description" content="大概是去年的某一天，执行 hexo s 命令时，会输出下面的错误： 123&amp;#123; [Error: Cannot find module &apos;./build/Release/DTraceProviderBindings&apos;] code: &apos;MODULE_NOT_FOUND&apos; &amp;#125;    &amp;#123; [Error: Cannot find module &apos;./build/default/">
-<meta name="keywords" content="hexo">
+  <meta name="description" content="Symbol 是 ES6 增加的第7种数据类型，也是第6种原始数据类型。symbol 值用来创建匿名的对象属性，同时也是唯一的，不会与其他属性名冲突。">
+<meta name="keywords" content="ES6">
 <meta property="og:type" content="article">
-<meta property="og:title" content="解决hexo Cannot find module &#39;.&#x2F;build&#x2F;Release&#x2F;DTraceProviderBindings&#39; 问题">
-<meta property="og:url" content="http://yoursite.com/2018/04/17/解决hexo-cannot-find-module-问题/index.html">
+<meta property="og:title" content="ES6 之 Symbol">
+<meta property="og:url" content="http://yoursite.com/2018/04/25/es6-Symbol/index.html">
 <meta property="og:site_name" content="zengxiaotao&#39;s personal blog">
-<meta property="og:description" content="大概是去年的某一天，执行 hexo s 命令时，会输出下面的错误： 123&amp;#123; [Error: Cannot find module &apos;./build/Release/DTraceProviderBindings&apos;] code: &apos;MODULE_NOT_FOUND&apos; &amp;#125;    &amp;#123; [Error: Cannot find module &apos;./build/default/">
+<meta property="og:description" content="Symbol 是 ES6 增加的第7种数据类型，也是第6种原始数据类型。symbol 值用来创建匿名的对象属性，同时也是唯一的，不会与其他属性名冲突。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-18T03:06:49.490Z">
+<meta property="og:updated_time" content="2018-04-25T12:48:59.918Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="解决hexo Cannot find module &#39;.&#x2F;build&#x2F;Release&#x2F;DTraceProviderBindings&#39; 问题">
-<meta name="twitter:description" content="大概是去年的某一天，执行 hexo s 命令时，会输出下面的错误： 123&amp;#123; [Error: Cannot find module &apos;./build/Release/DTraceProviderBindings&apos;] code: &apos;MODULE_NOT_FOUND&apos; &amp;#125;    &amp;#123; [Error: Cannot find module &apos;./build/default/">
+<meta name="twitter:title" content="ES6 之 Symbol">
+<meta name="twitter:description" content="Symbol 是 ES6 增加的第7种数据类型，也是第6种原始数据类型。symbol 值用来创建匿名的对象属性，同时也是唯一的，不会与其他属性名冲突。">
 
 
 
@@ -122,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/17/解决hexo-cannot-find-module-问题/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/25/es6-Symbol/"/>
 
 
 
@@ -132,7 +132,7 @@
   };
 </script>
 
-  <title>解决hexo Cannot find module './build/Release/DTraceProviderBindings' 问题 | zengxiaotao's personal blog</title>
+  <title>ES6 之 Symbol | zengxiaotao's personal blog</title>
   
 
 
@@ -296,7 +296,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/17/解决hexo-cannot-find-module-问题/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/25/es6-Symbol/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zengxiaotao">
@@ -313,7 +313,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">解决hexo Cannot find module './build/Release/DTraceProviderBindings' 问题
+          <h1 class="post-title" itemprop="name headline">ES6 之 Symbol
               
             
           </h1>
@@ -338,24 +338,12 @@
                 
               
 
-              <time title="创建时间：2018-04-17 18:56:16" itemprop="dateCreated datePublished" datetime="2018-04-17T18:56:16+08:00">2018-04-17</time>
+              <time title="创建时间：2018-04-25 18:41:11 / 修改时间：20:48:59" itemprop="dateCreated datePublished" datetime="2018-04-25T18:41:11+08:00">2018-04-25</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-04-18 11:06:49" itemprop="dateModified" datetime="2018-04-18T11:06:49+08:00">2018-04-18</time>
               
             
           </span>
@@ -388,17 +376,25 @@
       
 
       
-        <p>大概是去年的某一天，执行 <code>hexo s</code> 命令时，会输出下面的错误：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123; [Error: Cannot find module <span class="string">'./build/Release/DTraceProviderBindings'</span>] code: <span class="string">'MODULE_NOT_FOUND'</span> &#125;    </span><br><span class="line">&#123; [Error: Cannot find module <span class="string">'./build/default/DTraceProviderBindings'</span>] code: <span class="string">'MODULE_NOT_FOUND'</span> &#125;</span><br><span class="line">&#123; [Error: Cannot find module <span class="string">'./build/Debug/DTraceProviderBindings'</span>] code: <span class="string">'MODULE_NOT_FOUND'</span> &#125;</span><br></pre></td></tr></table></figure>
-<p>甚至在 <code>hexo -v</code> 的时候也会出现，但是它只是输出这一段错误，并不影响使用，网上简单的查了一下，改一下 node 版本到v5以下，问题也就解决了。</p>
-<p>但是做其他事情的时候，又得切换回高版本的 node ，每天都得 <code>nvm current</code>, <code>nvm ls</code> , <code>nvm use</code> 来回几遍，着实烦。</p>
+        <p>Symbol 是 ES6 增加的第7种数据类型，也是第6种原始数据类型。<br>symbol 值用来创建匿名的对象属性，同时也是唯一的，不会与其他属性名冲突。</p>
 <a id="more"></a>
-<p>这次把站点重新弄了一遍后，这个问题还是存在，<a href="">官方</a>提供的解决方法</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli --no-optional</span><br></pre></td></tr></table></figure>
-<p>网上包括我自己实际尝试后依然没有解决。</p>
-<p>查了几天资料之后，发现卸载 <code>dtrace-provider</code> 这个模块就行了</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install dtrace-provider -g</span><br></pre></td></tr></table></figure>
-<p>之后，重新执行 hexo 命令，错误信息就不会再出现了</p>
+<h2 id="创建一个-symbol-值"><a href="#创建一个-symbol-值" class="headerlink" title="创建一个 symbol 值"></a>创建一个 symbol 值</h2><p>Symbol 是一个函数，调用这个函数即创建了一个 symbol 值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="built_in">Symbol</span>  <span class="comment">//function</span></span><br><span class="line"><span class="keyword">var</span> sym = <span class="built_in">Symbol</span>()</span><br></pre></td></tr></table></figure>
+<p>但是 Symbol 不是一个构造函数，使用 new 来创建，会抛出错误</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sym = <span class="keyword">new</span> <span class="built_in">Symbol</span>() <span class="comment">// TypeError: Symbol is not a constructor</span></span><br></pre></td></tr></table></figure>
+<p>Symbol 函数可以接受一个参数，用于描述这个 symbol ，但是也仅仅是用于描述而已<br>调用 toSring 方法可以读取到这个描述</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sym1 = <span class="built_in">Symbol</span>(<span class="string">'hello world'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(sym1) <span class="comment">// Symbol(hello world)</span></span><br></pre></td></tr></table></figure>
+<p>即使传入完全一样的描述，所创建的 symbol 也是不相同的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sym1 = <span class="built_in">Symbol</span>(<span class="string">'hello world'</span>)</span><br><span class="line"><span class="keyword">var</span> sym2 = <span class="built_in">Symbol</span>(<span class="string">'hello world'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(sym1 === sym2) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用-symbol"><a href="#使用-symbol" class="headerlink" title="使用 symbol"></a>使用 symbol</h2><p>symbol 用于对象属性时，不能使用点字符，只能用于计算属性</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;</span><br><span class="line"><span class="keyword">var</span> sym = <span class="built_in">Symbol</span>(<span class="string">'hello world'</span>)</span><br><span class="line">obj[sym] = <span class="string">'hello Symbol'</span></span><br></pre></td></tr></table></figure>
+<h2 id="重复使用一个-symbol"><a href="#重复使用一个-symbol" class="headerlink" title="重复使用一个 symbol"></a>重复使用一个 symbol</h2><p>前面说过 每一个 symbol 值都是独一无二的，但是有时候我们也需要共用一个 symbol ，这时候就需要用到 <code>Symbol.for</code> 这一方法了。</p>
+<p>Symbol.for 方法接受一个 key 参数，根据这个 key 在全局的 Symbol 注册值中查找，如果之前已经通过 Symbol.for 方法和该key 创建过，那么就返回这个已经创建的 symbol 值，否则以 key 值创建一个，并注册一个全局值。下面这个例子可以比较 <code>Symbol</code> 和 <code>Symbol.for</code> 的不同</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sym1 = <span class="built_in">Symbol</span>(<span class="string">'hello world'</span>)</span><br><span class="line"><span class="keyword">var</span> sym2 = <span class="built_in">Symbol</span>(<span class="string">'hello world'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(sym1 === sym2) <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> sym3 = <span class="built_in">Symbol</span>.for(<span class="string">'global'</span>)</span><br><span class="line"><span class="keyword">var</span> sym4 = <span class="built_in">Symbol</span>.for(<span class="string">'global'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(sym3 === sym4) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>当要创建 sym4 时，由于之前 已经用 global 这个值创建了 sym3 ，因此会直接把 sym3 的值赋给 sym4</p>
+<p>和 Symbol.for 对应的另一个方法是 Symbol.keyFor<br>Symbol.keyFor 方法接受一个 symbol 值作为参数，返回对应的 key 值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 接上例</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Symbol</span>.keyFor(sym3)) <span class="comment">// global</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Symbol</span>.keyFor(sym4)) <span class="comment">// global</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Symbol</span>.keyFor(sym1)) <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<p>基本上，Symbol 了解这些就已经足够日常使用了。<br>剩下的一些零零散散的知识和一些 Well-known Symbol 之后抽空看看。</p>
 
       
     </div>
@@ -419,7 +415,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
+            <a href="/tags/ES6/" rel="tag"># ES6</a>
           
         </div>
       
@@ -432,15 +428,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/04/17/解决hexo-cannot-find-module-问题/" rel="next" title="解决hexo Cannot find module './build/Release/DTraceProviderBindings' 问题">
+                <i class="fa fa-chevron-left"></i> 解决hexo Cannot find module './build/Release/DTraceProviderBindings' 问题
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/25/es6-Symbol/" rel="prev" title="ES6 之 Symbol">
-                ES6 之 Symbol <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -491,8 +487,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -568,6 +573,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建一个-symbol-值"><span class="nav-number">1.</span> <span class="nav-text">创建一个 symbol 值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-symbol"><span class="nav-number">2.</span> <span class="nav-text">使用 symbol</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重复使用一个-symbol"><span class="nav-number">3.</span> <span class="nav-text">重复使用一个 symbol</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

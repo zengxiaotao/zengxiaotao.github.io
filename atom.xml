@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-18T03:06:49.490Z</updated>
+  <updated>2018-04-25T12:48:59.918Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ES6 之 Symbol</title>
+    <link href="http://yoursite.com/2018/04/25/es6-Symbol/"/>
+    <id>http://yoursite.com/2018/04/25/es6-Symbol/</id>
+    <published>2018-04-25T10:41:11.000Z</published>
+    <updated>2018-04-25T12:48:59.918Z</updated>
+    
+    <content type="html"><![CDATA[<p>Symbol 是 ES6 增加的第7种数据类型，也是第6种原始数据类型。<br>symbol 值用来创建匿名的对象属性，同时也是唯一的，不会与其他属性名冲突。</p><a id="more"></a><h2 id="创建一个-symbol-值"><a href="#创建一个-symbol-值" class="headerlink" title="创建一个 symbol 值"></a>创建一个 symbol 值</h2><p>Symbol 是一个函数，调用这个函数即创建了一个 symbol 值。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="built_in">Symbol</span>  <span class="comment">//function</span></span><br><span class="line"><span class="keyword">var</span> sym = <span class="built_in">Symbol</span>()</span><br></pre></td></tr></table></figure><p>但是 Symbol 不是一个构造函数，使用 new 来创建，会抛出错误</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sym = <span class="keyword">new</span> <span class="built_in">Symbol</span>() <span class="comment">// TypeError: Symbol is not a constructor</span></span><br></pre></td></tr></table></figure><p>Symbol 函数可以接受一个参数，用于描述这个 symbol ，但是也仅仅是用于描述而已<br>调用 toSring 方法可以读取到这个描述</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sym1 = <span class="built_in">Symbol</span>(<span class="string">'hello world'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(sym1) <span class="comment">// Symbol(hello world)</span></span><br></pre></td></tr></table></figure><p>即使传入完全一样的描述，所创建的 symbol 也是不相同的</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sym1 = <span class="built_in">Symbol</span>(<span class="string">'hello world'</span>)</span><br><span class="line"><span class="keyword">var</span> sym2 = <span class="built_in">Symbol</span>(<span class="string">'hello world'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(sym1 === sym2) <span class="comment">// false</span></span><br></pre></td></tr></table></figure><h2 id="使用-symbol"><a href="#使用-symbol" class="headerlink" title="使用 symbol"></a>使用 symbol</h2><p>symbol 用于对象属性时，不能使用点字符，只能用于计算属性</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;</span><br><span class="line"><span class="keyword">var</span> sym = <span class="built_in">Symbol</span>(<span class="string">'hello world'</span>)</span><br><span class="line">obj[sym] = <span class="string">'hello Symbol'</span></span><br></pre></td></tr></table></figure><h2 id="重复使用一个-symbol"><a href="#重复使用一个-symbol" class="headerlink" title="重复使用一个 symbol"></a>重复使用一个 symbol</h2><p>前面说过 每一个 symbol 值都是独一无二的，但是有时候我们也需要共用一个 symbol ，这时候就需要用到 <code>Symbol.for</code> 这一方法了。</p><p>Symbol.for 方法接受一个 key 参数，根据这个 key 在全局的 Symbol 注册值中查找，如果之前已经通过 Symbol.for 方法和该key 创建过，那么就返回这个已经创建的 symbol 值，否则以 key 值创建一个，并注册一个全局值。下面这个例子可以比较 <code>Symbol</code> 和 <code>Symbol.for</code> 的不同</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sym1 = <span class="built_in">Symbol</span>(<span class="string">'hello world'</span>)</span><br><span class="line"><span class="keyword">var</span> sym2 = <span class="built_in">Symbol</span>(<span class="string">'hello world'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(sym1 === sym2) <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> sym3 = <span class="built_in">Symbol</span>.for(<span class="string">'global'</span>)</span><br><span class="line"><span class="keyword">var</span> sym4 = <span class="built_in">Symbol</span>.for(<span class="string">'global'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(sym3 === sym4) <span class="comment">// true</span></span><br></pre></td></tr></table></figure><p>当要创建 sym4 时，由于之前 已经用 global 这个值创建了 sym3 ，因此会直接把 sym3 的值赋给 sym4</p><p>和 Symbol.for 对应的另一个方法是 Symbol.keyFor<br>Symbol.keyFor 方法接受一个 symbol 值作为参数，返回对应的 key 值</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 接上例</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Symbol</span>.keyFor(sym3)) <span class="comment">// global</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Symbol</span>.keyFor(sym4)) <span class="comment">// global</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Symbol</span>.keyFor(sym1)) <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure><p>基本上，Symbol 了解这些就已经足够日常使用了。<br>剩下的一些零零散散的知识和一些 Well-known Symbol 之后抽空看看。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Symbol 是 ES6 增加的第7种数据类型，也是第6种原始数据类型。&lt;br&gt;symbol 值用来创建匿名的对象属性，同时也是唯一的，不会与其他属性名冲突。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
+    
+  </entry>
   
   <entry>
     <title>解决hexo Cannot find module &#39;./build/Release/DTraceProviderBindings&#39; 问题</title>
