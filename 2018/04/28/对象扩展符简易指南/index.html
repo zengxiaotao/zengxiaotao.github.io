@@ -102,13 +102,18 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="zengxiaotao&#39;s personal blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="合并多个 Javascript 对象是常见的工作，但不好的是，至少到目前，Javascript 仍然没有一种方便的方法来完成这个工作。至少现在是这样。 在 ES5 时代，你可以使用 Lodash 的 _.extend(target, [sources]) 方法，而 ES2015 则引入了 Object.assign(target, [sources]) 方法。 幸运的是，对象扩展符 (an ECM">
+<meta name="keywords" content="ES6,译文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【译】对象扩展符简易指南">
+<meta property="og:url" content="http://yoursite.com/2018/04/28/对象扩展符简易指南/index.html">
 <meta property="og:site_name" content="zengxiaotao&#39;s personal blog">
+<meta property="og:description" content="合并多个 Javascript 对象是常见的工作，但不好的是，至少到目前，Javascript 仍然没有一种方便的方法来完成这个工作。至少现在是这样。 在 ES5 时代，你可以使用 Lodash 的 _.extend(target, [sources]) 方法，而 ES2015 则引入了 Object.assign(target, [sources]) 方法。 幸运的是，对象扩展符 (an ECM">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-29T08:05:30.444Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zengxiaotao&#39;s personal blog">
+<meta name="twitter:title" content="【译】对象扩展符简易指南">
+<meta name="twitter:description" content="合并多个 Javascript 对象是常见的工作，但不好的是，至少到目前，Javascript 仍然没有一种方便的方法来完成这个工作。至少现在是这样。 在 ES5 时代，你可以使用 Lodash 的 _.extend(target, [sources]) 方法，而 ES2015 则引入了 Object.assign(target, [sources]) 方法。 幸运的是，对象扩展符 (an ECM">
 
 
 
@@ -117,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/28/对象扩展符简易指南/"/>
 
 
 
@@ -127,7 +132,7 @@
   };
 </script>
 
-  <title>zengxiaotao's personal blog</title>
+  <title>【译】对象扩展符简易指南 | zengxiaotao's personal blog</title>
   
 
 
@@ -174,8 +179,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -215,7 +219,7 @@
         
         
           
-          <li class="menu-item menu-item-home menu-item-active">
+          <li class="menu-item menu-item-home">
     <a href="/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
   </li>
@@ -275,9 +279,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -309,11 +313,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/28/对象扩展符简易指南/" itemprop="url">
-                  【译】对象扩展符简易指南
-                </a>
+          <h1 class="post-title" itemprop="name headline">【译】对象扩展符简易指南
               
             
           </h1>
@@ -388,9 +388,7 @@
       
 
       
-        
-          
-            <p>合并多个 Javascript 对象是常见的工作，但不好的是，至少到目前，Javascript 仍然没有一种方便的方法来完成这个工作。至少现在是这样。</p>
+        <p>合并多个 Javascript 对象是常见的工作，但不好的是，至少到目前，Javascript 仍然没有一种方便的方法来完成这个工作。至少现在是这样。</p>
 <p>在 ES5 时代，你可以使用 Lodash 的 <code>_.extend(target, [sources])</code> 方法，而 ES2015 则引入了 <code>Object.assign(target, [sources])</code> 方法。</p>
 <p>幸运的是，<a href="https://github.com/tc39/proposal-object-rest-spread" target="_blank" rel="noopener">对象扩展符</a> (an ECMASript proposal at stage 3) 是一个很大的进步，提供了简单方便的如下简介方便的语法。</p>
 <p><a href="https://repl.it/@panzerdp/FearlessLovableUintagroundsquirrel" target="_blank" rel="noopener">Run demo</a></p>
@@ -560,8 +558,6 @@
 <p>同时，对象扩展使用上方便简洁，能更好的处理嵌套对象，保持不可变性，在实现对象克隆和填充默认属性值上也使用方便。</p>
 <p>而 <code>rest</code> 操作符在解构赋值时可以收集剩余的属性。</p>
 
-          
-        
       
     </div>
 
@@ -579,317 +575,38 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/25/es6-Symbol/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zengxiaotao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zengxiaotao's personal blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/25/es6-Symbol/" itemprop="url">
-                  ES6 之 Symbol
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-04-25 18:41:11 / 修改时间：20:48:59" itemprop="dateCreated datePublished" datetime="2018-04-25T18:41:11+08:00">2018-04-25</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/ES6/" rel="tag"># ES6</a>
           
-            
+            <a href="/tags/译文/" rel="tag"># 译文</a>
           
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          <p>Symbol 是 ES6 增加的第7种数据类型，也是第6种原始数据类型。<br>symbol 值用来创建匿名的对象属性，同时也是唯一的，不会与其他属性名冲突。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/04/25/es6-Symbol/#更多" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/25/es6-Symbol/" rel="next" title="ES6 之 Symbol">
+                <i class="fa fa-chevron-left"></i> ES6 之 Symbol
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/17/解决hexo-cannot-find-module-问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zengxiaotao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zengxiaotao's personal blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/17/解决hexo-cannot-find-module-问题/" itemprop="url">
-                  解决hexo Cannot find module './build/Release/DTraceProviderBindings' 问题
-                </a>
-              
+          <div class="post-nav-prev post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-04-17 18:56:16" itemprop="dateCreated datePublished" datetime="2018-04-17T18:56:16+08:00">2018-04-17</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-04-18 11:06:49" itemprop="dateModified" datetime="2018-04-18T11:06:49+08:00">2018-04-18</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>大概是去年的某一天，执行 <code>hexo s</code> 命令时，会输出下面的错误：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123; [Error: Cannot find module <span class="string">'./build/Release/DTraceProviderBindings'</span>] code: <span class="string">'MODULE_NOT_FOUND'</span> &#125;    </span><br><span class="line">&#123; [Error: Cannot find module <span class="string">'./build/default/DTraceProviderBindings'</span>] code: <span class="string">'MODULE_NOT_FOUND'</span> &#125;</span><br><span class="line">&#123; [Error: Cannot find module <span class="string">'./build/Debug/DTraceProviderBindings'</span>] code: <span class="string">'MODULE_NOT_FOUND'</span> &#125;</span><br></pre></td></tr></table></figure>
-<p>甚至在 <code>hexo -v</code> 的时候也会出现，但是它只是输出这一段错误，并不影响使用，网上简单的查了一下，改一下 node 版本到v5以下，问题也就解决了。</p>
-<p>但是做其他事情的时候，又得切换回高版本的 node ，每天都得 <code>nvm current</code>, <code>nvm ls</code> , <code>nvm use</code> 来回几遍，着实烦。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/04/17/解决hexo-cannot-find-module-问题/#更多" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -899,14 +616,19 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -929,8 +651,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1012,6 +743,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-可枚举以及自有属性"><span class="nav-number">1.</span> <span class="nav-text">1. 可枚举以及自有属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-可枚举属性"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 可枚举属性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-自有属性"><span class="nav-number">2.</span> <span class="nav-text">1.2 自有属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-对象扩展属性"><span class="nav-number">3.</span> <span class="nav-text">2. 对象扩展属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-对象扩展规则：后面的属性会覆盖前面的"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 对象扩展规则：后面的属性会覆盖前面的</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-克隆对象"><span class="nav-number">4.</span> <span class="nav-text">2.2 克隆对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#浅复制"><span class="nav-number">4.1.</span> <span class="nav-text">浅复制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原型失去了"><span class="nav-number">4.2.</span> <span class="nav-text">原型失去了</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-不可变对象更新"><span class="nav-number">4.3.</span> <span class="nav-text">2.3 不可变对象更新</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-合并对象"><span class="nav-number">4.4.</span> <span class="nav-text">2.4 合并对象</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-给对象设置默认值"><span class="nav-number">5.</span> <span class="nav-text">2.5 给对象设置默认值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6-更加深入"><span class="nav-number">5.1.</span> <span class="nav-text">2.6 更加深入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-7-扩展-undefined、null-和-原始类型值"><span class="nav-number">5.2.</span> <span class="nav-text">2.7 扩展 undefined、null 和 原始类型值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-剩余属性"><span class="nav-number">5.3.</span> <span class="nav-text">3. 剩余属性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-结论"><span class="nav-number">6.</span> <span class="nav-text">4. 结论</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1139,6 +886,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
 
   
 
