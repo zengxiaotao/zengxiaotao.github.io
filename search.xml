@@ -17,12 +17,4 @@
         <tag>ES6</tag>
       </tags>
   </entry>
-  <entry>
-    <title><![CDATA[解决hexo Cannot find module './build/Release/DTraceProviderBindings' 问题]]></title>
-    <url>%2Fposts%2Fe633b5d7%2F</url>
-    <content type="text"><![CDATA[大概是去年的某一天，执行 hexo s 命令时，会输出下面的错误： 123&#123; [Error: Cannot find module './build/Release/DTraceProviderBindings'] code: 'MODULE_NOT_FOUND' &#125; &#123; [Error: Cannot find module './build/default/DTraceProviderBindings'] code: 'MODULE_NOT_FOUND' &#125;&#123; [Error: Cannot find module './build/Debug/DTraceProviderBindings'] code: 'MODULE_NOT_FOUND' &#125; 甚至在 hexo -v 的时候也会出现，但是它只是输出这一段错误，并不影响使用，网上简单的查了一下，改一下 node 版本到v5以下，问题也就解决了。 但是做其他事情的时候，又得切换回高版本的 node ，每天都得 nvm current, nvm ls , nvm use 来回几遍，着实烦。 这次把站点重新弄了一遍后，这个问题还是存在，官方提供的解决方法 1npm install hexo-cli --no-optional 网上包括我自己实际尝试后依然没有解决。 查了几天资料之后，发现卸载 dtrace-provider 这个模块就行了 1npm install dtrace-provider -g 之后，重新执行 hexo 命令，错误信息就不会再出现了]]></content>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
 </search>
