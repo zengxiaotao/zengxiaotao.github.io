@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[常用的api (持续更新)]]></title>
     <url>%2Fposts%2Fcaa38fce%2F</url>
-    <content type="text"><![CDATA[1. 手机号码归属地 https://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel= request https://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=1820142**** response 123456789__GetZoneResult_ = &#123; mts:'1820142', province:'北京', catName:'中国移动', telString:'1820142****', areaVid:'29400', ispVid:'3236139', carrier:'北京移动'&#125;]]></content>
+    <content type="text"><![CDATA[汇总一些常用的 API。 1. 手机号码归属地 https://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel= request https://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=1820142**** response 123456789__GetZoneResult_ = &#123; mts:'1820142', province:'北京', catName:'中国移动', telString:'1820142****', areaVid:'29400', ispVid:'3236139', carrier:'北京移动'&#125;]]></content>
       <tags>
         <tag>tool</tag>
       </tags>
