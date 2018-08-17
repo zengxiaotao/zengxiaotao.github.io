@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[常用的api (持续更新)]]></title>
-    <url>%2Fposts%2Fcaa38fce%2F</url>
-    <content type="text"><![CDATA[汇总一些常用的 API。 1. 手机号码归属地 https://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel= request https://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=1820142**** response 123456789__GetZoneResult_ = &#123; mts:'1820142', province:'北京', catName:'中国移动', telString:'1820142****', areaVid:'29400', ispVid:'3236139', carrier:'北京移动'&#125;]]></content>
+    <title><![CDATA[使用mobx]]></title>
+    <url>%2Fposts%2Fe80b6dcf%2F</url>
+    <content type="text"><![CDATA[mobx observable原始值12345let &#123;observable&#125; = require('mobx')let a = observable(3)console.log(a.get()) // 3]]></content>
       <tags>
-        <tag>tool</tag>
+        <tag>react</tag>
+        <tag>mobx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[less语法]]></title>
+    <url>%2Fposts%2F94797274%2F</url>
+    <content type="text"><![CDATA[记录一下 大纲根据文档的顺序。 variables merge parent-selector 开始前1npm install less -g 由于 less 是 linux 中一个内置的命令，因此为了区分（我猜的），使用 lessc 来编译文件。 1lessc styles.less styles.css 如果使用的编辑器是 vs code，那么可以安装 easy-less 插件。每次保存 less 文件后，可以自动编译成 css 文件。 variables （变量）个人认为 引入变量 在代码书写量上没有明显的减少，变量的最大作用是维护成本较低。当属性一个css 属性时，往往只需要改动一个地方即可。 用法123456@themeColor: #ff5000;@largeSize: 24px;.btn &#123; color: @themeColor;&#125; parent-selectorparent-selector 应该算是 less 里用的比较多的功能了，能大幅减少代码的长度。 最基本的用法123456789101112131415161718.a &#123; &amp; &#123; color: red; &#125; &amp; &amp; &#123; color: blue; &#125;&#125;div &#123; &amp; &#123; width: 100px; &#125; &amp; &amp; &#123; height: 100px; &#125;&#125; 返回 123456789101112.a &#123; color: red;&#125;.a .a &#123; color: blue;&#125;div &#123; width: 100px;&#125;div div &#123; height: 100px;&#125; 多个 &amp;通过 &amp; 来改变选择器的顺序&amp; 能同时指代多个 parentmerge用于合并同一个css 属性的两部分属性值，分为通过逗号(;) 和 空格( ) 合并。 通过逗号连接 语法 property+ 用于可以应用多组属性值的属性，如 box-shadow 1234567.merge1() &#123; box-shadow+: inset 0 0 10px #555;&#125;.a &#123; .merge1(); box-shadow+: 0 0 20px black;&#125; 返回 123.a &#123; box-shadow: inset 0 0 10px #555, 0 0 20px black;&#125; 通过空格连接 语法 property+_ 1234567.base_border() &#123; border+_: 1px solid;&#125;.red_border &#123; .base_border(); border+_: red;&#125; 返回 123.red_border &#123; border: 1px solid red;&#125; 又或者 1234567891011121314@keyframes demo &#123; 0% &#123; background-color: #fff; &#125; 100% &#123; background-color: #000000; &#125;&#125;.base_animation() &#123; animation: 1s linear;&#125;.custom_animation &#123; animation: demo 1s linear;&#125; 返回 1234567891011@keyframes demo &#123; 0% &#123; background-color: #fff; &#125; 100% &#123; background-color: #000000; &#125;&#125;.custom_animation &#123; animation: demo 1s linear;&#125;]]></content>
+      <tags>
+        <tag>笔记</tag>
       </tags>
   </entry>
   <entry>
