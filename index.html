@@ -393,7 +393,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-11-02 18:19:16" itemprop="dateModified" datetime="2018-11-02T18:19:16+08:00">2018-11-02</time>
+                <time title="修改时间：2018-11-02 19:21:26" itemprop="dateModified" datetime="2018-11-02T19:21:26+08:00">2018-11-02</time>
               
             
           </span>
@@ -431,8 +431,8 @@
 <li>webpack-cli 工具介绍</li>
 <li>webpack node api</li>
 <li>webpack 启动过程</li>
-<li>compiler 对象</li>
 <li>如何自己写一个 webpack plugin</li>
+<li>如何自己写一个 webpack loader</li>
 </ol>
 <h2 id="webpack-cli"><a href="#webpack-cli" class="headerlink" title="webpack-cli"></a>webpack-cli</h2><h3 id="什么是-webpack-cli"><a href="#什么是-webpack-cli" class="headerlink" title="什么是 webpack-cli"></a>什么是 webpack-cli</h3><blockquote>
 <p>webpack CLI is a CLI tool for providing a flexible set of commands for developers to increase speed when setting up a custom webpack project. As of webpack v4, webpack is not expecting a configuration file but often, developers want to create a more custom webpack configuration based on their use-cases and needs. Exactly all these cases with <strong>webpack CLI we are providing a set of tools to improve the setup of custom webpack configuration</strong>.</p>
@@ -483,7 +483,7 @@
 <p>webpack-dev-serve/bin/webpack-dev-server.js</p>
 <p><img src="http://pcjaqb4ci.bkt.clouddn.com/images/20181102144516.png" alt=""></p>
 <h3 id="compiler"><a href="#compiler" class="headerlink" title="compiler"></a>compiler</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br></pre></td></tr></table></figure>
-<p>webpack 函数会接收 2 个参数，第一个参数就是传入的 options 配置对象，第二个参数为一个 callback 函数。<br>只传入配置对象时，将会生成一个 compiler 对象。</p>
+<p>webpack 函数会接收 2 个参数，第一个参数就是传入的 options 配置对象，第二个参数为一个 callback 函数。<br>只传入配置对象时，将会生成一个 compiler 对象。如果传入了 callback , 则会自动执行 <code>compiler.run</code> 方法</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> compiler = webpack(options, [callback]);</span><br></pre></td></tr></table></figure>
 <p>compiler 会暴露出 <code>run</code> 和 <code>watch</code> 方法。<code>run</code> 方法会立即编译打包文件。<code>watch</code> 方法也会打包文件，但会自动监听文件变化，从而重新打包。</p>
 <h3 id="run"><a href="#run" class="headerlink" title="run"></a>run</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compiler.run(<span class="function"><span class="keyword">function</span>(<span class="params">err,stats</span>) </span>&#123;&#125;);</span><br></pre></td></tr></table></figure>
