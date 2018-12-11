@@ -109,13 +109,33 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="zengxiaotao&#39;s personal blog">
-<meta property="og:url" content="http://yoursite.com/tags/ES6/index.html">
+  <meta name="description" content="目录 什么是 compiler 和 compilation  compiler 启动过程  compilation 启动过程">
+<meta name="keywords" content="webpack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="compiler  Compilation">
+<meta property="og:url" content="http://yoursite.com/posts/82e413ee/index.html">
 <meta property="og:site_name" content="zengxiaotao&#39;s personal blog">
+<meta property="og:description" content="目录 什么是 compiler 和 compilation  compiler 启动过程  compilation 启动过程">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://pjidtibsr.bkt.clouddn.com/images/20181210145523.png">
+<meta property="og:image" content="http://pjidtibsr.bkt.clouddn.com/images/20181210151951.png">
+<meta property="og:image" content="http://pjidtibsr.bkt.clouddn.com/images/20181210152549.png">
+<meta property="og:image" content="http://pjidtibsr.bkt.clouddn.com/images/20181210153023.png">
+<meta property="og:image" content="http://pjidtibsr.bkt.clouddn.com/images/20181210153757.png">
+<meta property="og:image" content="http://pjidtibsr.bkt.clouddn.com/images/20181210154258.png">
+<meta property="og:image" content="http://pjidtibsr.bkt.clouddn.com/images/20181210155902.png">
+<meta property="og:image" content="http://pjidtibsr.bkt.clouddn.com/images/20181210175924.png">
+<meta property="og:image" content="http://pjidtibsr.bkt.clouddn.com/images/20181210180202.png">
+<meta property="og:image" content="http://pjidtibsr.bkt.clouddn.com/images/20181210182554.png">
+<meta property="og:image" content="http://pjidtibsr.bkt.clouddn.com/images/20181210182637.png">
+<meta property="og:image" content="http://pjidtibsr.bkt.clouddn.com/images/20181210183505.png">
+<meta property="og:image" content="http://pjidtibsr.bkt.clouddn.com/images/20181210183819.png">
+<meta property="og:image" content="http://pjidtibsr.bkt.clouddn.com/images/20181210213905.png">
+<meta property="og:updated_time" content="2018-12-10T13:40:22.367Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zengxiaotao&#39;s personal blog">
+<meta name="twitter:title" content="compiler  Compilation">
+<meta name="twitter:description" content="目录 什么是 compiler 和 compilation  compiler 启动过程  compilation 启动过程">
+<meta name="twitter:image" content="http://pjidtibsr.bkt.clouddn.com/images/20181210145523.png">
 
 
 
@@ -124,7 +144,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/ES6/"/>
+  <link rel="canonical" href="http://yoursite.com/posts/82e413ee/"/>
 
 
 
@@ -134,7 +154,7 @@
   };
 </script>
 
-  <title>标签: ES6 | zengxiaotao's personal blog</title>
+  <title>compiler  Compilation | zengxiaotao's personal blog</title>
   
 
 
@@ -181,7 +201,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -237,7 +257,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签<span class="badge">3</span></a>
   </li>
@@ -265,25 +285,6 @@
 
   
     
-
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
 
   
 
@@ -332,86 +333,269 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>ES6<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/posts/82e413ee/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zengxiaotao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zengxiaotao's personal blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/posts/adc6686/" itemprop="url">
-              
-                <span itemprop="name">【译】对象扩展符简易指南</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">compiler  Compilation
+              
+            
+          </h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-28T19:02:23+08:00"
-              content="2018-04-28" >
-          04-28
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
 
-    </header>
-  </article>
+            
+            
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-10 14:43:12 / 修改时间：21:40:22" itemprop="dateCreated datePublished" datetime="2018-12-10T14:43:12+08:00">2018-12-10</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/9ced4e66/" itemprop="url">
-              
-                <span itemprop="name">ES6 之 Symbol</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-25T18:41:11+08:00"
-              content="2018-04-25" >
-          04-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
+        <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ol>
+<li><p>什么是 <code>compiler</code> 和 <code>compilation</code></p>
+</li>
+<li><p><code>compiler</code> 启动过程</p>
+</li>
+<li><p><code>compilation</code> 启动过程</p>
+</li>
+</ol>
+<a id="more"></a>
+<h1 id="compiler-和-compilation-v"><a href="#compiler-和-compilation-v" class="headerlink" title="compiler 和 compilation v"></a>compiler 和 compilation v</h1><p>先贴一张图，来自 <code>webpack</code> 官方的解释</p>
+<blockquote>
+<p>原文链接 <a href="https://github.com/webpack/docs/wiki/how-to-write-a-plugin" target="_blank" rel="noopener">how to write a webpack plugin</a></p>
+</blockquote>
+<p><img src="http://pjidtibsr.bkt.clouddn.com/images/20181210145523.png" alt=""></p>
+<p>简单翻译一下</p>
+<p><code>compiler</code> 对象代表了一个 <code>webpack</code> 完整的配置环境，在 <code>webpack</code> 启动时构建，包括了所有的可操作的配置项，比如 <code>options</code> , <code>loaders</code> 和 <code>plugins</code>。</p>
+<p><code>compilation</code> 对象则代表了一次 <strong>单次构建</strong>。每次文件变更的时候，都会开始一次新的编译。<code>compilation</code> 会提供以下信息：模块资源，已编译的文件，改变的文件，以及监听的依赖。</p>
+<p>它们之间的关系是</p>
+<p>options –&gt; Compiler -&gt; Compilation</p>
+<h1 id="compiler-启动过程"><a href="#compiler-启动过程" class="headerlink" title="compiler 启动过程"></a>compiler 启动过程</h1><blockquote>
+<p>源码地址 <a href="https://github.com/webpack/webpack/blob/master/lib/Compiler.js" target="_blank" rel="noopener">source</a></p>
+</blockquote>
+<p>先上一个总览</p>
+<p>生成一个 <code>compiler</code> 主要经历以下几个过程</p>
+<ol>
+<li>开始编译</li>
+</ol>
+<p>相关的生命周期钩子 <code>beforeRun</code>, <code>run</code></p>
+<p><img src="http://pjidtibsr.bkt.clouddn.com/images/20181210151951.png" alt=""></p>
+<p><img src="http://pjidtibsr.bkt.clouddn.com/images/20181210152549.png" alt=""></p>
+<ol start="2">
+<li>compile</li>
+</ol>
+<p>相关的生命周期钩子 <code>beforeCompile</code> 、<code>compile</code> 和 <code>make</code></p>
+<p><img src="http://pjidtibsr.bkt.clouddn.com/images/20181210153023.png" alt=""></p>
+<ol start="3">
+<li>make 阶段，从入口点分析模块及其依赖的模块，创建这些模块对象</li>
+</ol>
+<p>相关的生命周期钩子 <code>make</code></p>
+<p>这一步会根据 <code>compiler</code> 对象生成一个 <code>compilation</code> 对象，并且完成 <code>compilation</code> 的 <code>finish</code>, <code>seal</code> 过程</p>
+<ol start="4">
+<li><p>after-compilation 完成构建</p>
+</li>
+<li><p>记录编译信息</p>
+</li>
+</ol>
+<p>相关的生命周期钩子 <code>shouldEmit</code>, </p>
+<p><img src="http://pjidtibsr.bkt.clouddn.com/images/20181210153757.png" alt=""></p>
+<ol start="6">
+<li>编译文件</li>
+</ol>
+<p><img src="http://pjidtibsr.bkt.clouddn.com/images/20181210154258.png" alt=""></p>
+<ol start="7">
+<li>记录 records</li>
+</ol>
+<blockquote>
+<p>先说说什么是 records</p>
+</blockquote>
+<p>“用于存储跨多次构建(across multiple builds)的模块标识符的数据片段”。可以使用此文件来跟踪在每次构建之间的模块变化。</p>
+<p>如果你使用了代码分离(code splittnig)这样的复杂配置，records 会特别有用。这些数据用于确保拆分 bundle，以便实现你需要的缓存(caching)行为。</p>
+<p>只需要配置 <code>recordPath</code> 即可开启</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">recordsPath: path.join(__dirname, <span class="string">'records.json'</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="http://pjidtibsr.bkt.clouddn.com/images/20181210155902.png" alt=""></p>
+<h2 id="compiler-全部生命周期"><a href="#compiler-全部生命周期" class="headerlink" title="compiler 全部生命周期"></a>compiler 全部生命周期</h2><h1 id="compilation-编译过程"><a href="#compilation-编译过程" class="headerlink" title="compilation 编译过程"></a><code>compilation</code> 编译过程</h1><h2 id="在-SingleEntryPlugin-里-调用addEntry"><a href="#在-SingleEntryPlugin-里-调用addEntry" class="headerlink" title="在 SingleEntryPlugin 里 调用addEntry"></a>在 SingleEntryPlugin 里 调用addEntry</h2><p>执行 <code>Compilation</code> 的构造函数，只是生成了一个 <code>compilation</code> 的实例对象，包含了一系列编译信息。</p>
+<p>但是又是在哪触发了编译过程？？？</p>
+<p>回到 <code>compiler</code> 里，在 <code>compile</code> 方法内，生成了 <code>compilation</code> 对象之后，紧接着会触发 <code>compiler</code> 的 <code>make</code> 钩子，按照之前讲的插件的写法，给生命周期注入钩子的写法，全局搜索 <code>compiler.hooks.make.tap.</code></p>
+<p><img src="http://pjidtibsr.bkt.clouddn.com/images/20181210175924.png" alt=""></p>
+<p>所以看到以下这7个插件，在<code>compiler</code> 的 <code>make</code> 生命周期注入了钩子。这里我们主要看 <code>SingleEntryPlugin.js</code> 这个文件。</p>
+<p><img src="http://pjidtibsr.bkt.clouddn.com/images/20181210180202.png" alt=""></p>
+<p>因此，在 <code>compiler</code> 的 <code>make</code> 阶段触发了 <code>compilation</code> 模块的构建</p>
+<h2 id="addEntry"><a href="#addEntry" class="headerlink" title="addEntry"></a><code>addEntry</code></h2><p>在 <code>addEntry</code> 里并没有做太多操作，将传入的 <code>entry</code> 信息放入 <code>_preparedEntrypoints</code> 数组内，之后调用内部的 <code>_addModuleChain</code> 方法。</p>
+<h2 id="addModuleChain"><a href="#addModuleChain" class="headerlink" title="_addModuleChain"></a><code>_addModuleChain</code></h2><p>在 <code>_addModuleChain</code> 内部会做两件事</p>
+<ol>
+<li>根据传入的 <code>dependency</code> 找到对应的 <code>ModuleFactory（模块工厂）</code>，调用模块工厂的 <code>create</code> 方法创建模块。</li>
+</ol>
+<p><img src="http://pjidtibsr.bkt.clouddn.com/images/20181210182554.png" alt=""></p>
+<ol start="2">
+<li>构建模块</li>
+</ol>
+<p><img src="http://pjidtibsr.bkt.clouddn.com/images/20181210182637.png" alt=""></p>
+<h2 id="创建模块"><a href="#创建模块" class="headerlink" title="创建模块"></a>创建模块</h2><h3 id="什么是-ModuleFactory（模块工厂）"><a href="#什么是-ModuleFactory（模块工厂）" class="headerlink" title="什么是 ModuleFactory（模块工厂）"></a>什么是 <code>ModuleFactory（模块工厂）</code></h3><p>回想一下，在写一个 <code>webpack.config.js</code> 时，是怎么写 <code>entry</code> 的。最常用的是一个字符串比如 <code>./src/index.js</code>。但是 <code>entry</code> 也支持数组，对象，函数等写法, </p>
+<p>不同的写法对应的 模块工厂 如下</p>
+<ul>
+<li>string –&gt; normalModuleFactory</li>
+<li>array –&gt; MultiModuleFactory</li>
+<li>function -&gt; normalModuleFactory &amp;&amp; MultiModuleFactory</li>
+</ul>
+<p>因此也分别对应 <code>SingleEntryPlugin</code>、<code>MultiEntryPlugin</code> 和 <code>DynamicEntryPlugin</code> </p>
+<p><a href="https://webpack.docschina.org/configuration/entry-context/" target="_blank" rel="noopener">webpack entry doc</a></p>
+<p><img src="http://pjidtibsr.bkt.clouddn.com/images/20181210183505.png" alt=""></p>
+<p>对于不同的 entry ，webpack 是如何选择不同的 <code>ModuleFactory</code> 。</p>
+<p>在 <code>./EntryOptionPlugin</code> 内</p>
+<p><img src="http://pjidtibsr.bkt.clouddn.com/images/20181210183819.png" alt=""></p>
+<h3 id="normalModuleFactory"><a href="#normalModuleFactory" class="headerlink" title="normalModuleFactory"></a>normalModuleFactory</h3><h3 id="MainTemplate-和-chunkTemplate"><a href="#MainTemplate-和-chunkTemplate" class="headerlink" title="MainTemplate 和 chunkTemplate"></a>MainTemplate 和 chunkTemplate</h3><h3 id="createChunkAssets"><a href="#createChunkAssets" class="headerlink" title="createChunkAssets"></a>createChunkAssets</h3><p><code>createChunkAssets</code> 的作用是根据 <code>compilation</code> 的 <code>chunks</code> ，分析其中每一个 <code>chunk</code> 所包含的<code>文件(files)</code>，根据每一个 <code>file</code> 生成 <code>file</code> 的 <code>content string</code> 也就是 <code>source</code>, 将这些 <code>source</code> 统一放入 <code>this.assets</code> 对象内。</p>
+<p>但注意的是，这里还没有写入文件。只是生成了一段文本。真正生成文件的工作，前面说过，会在 <code>compiler</code> 的 <code>emitAssets</code> 方法内。</p>
+<p><img src="http://pjidtibsr.bkt.clouddn.com/images/20181210213905.png" alt=""></p>
+<p>生成 <code>assets</code> 之后，进入到 <code>chunkAsset</code> 生命周期，如果你想对 <code>source</code> 做任何更改，这里是最佳时期。</p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/webpack/" rel="tag"># webpack</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/d5545be8/" rel="next" title="webpack源码解析(for webpack v4)">
+                <i class="fa fa-chevron-left"></i> webpack源码解析(for webpack v4)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -434,8 +618,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -513,6 +706,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#compiler-和-compilation-v"><span class="nav-number">2.</span> <span class="nav-text">compiler 和 compilation v</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#compiler-启动过程"><span class="nav-number">3.</span> <span class="nav-text">compiler 启动过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#compiler-全部生命周期"><span class="nav-number">3.1.</span> <span class="nav-text">compiler 全部生命周期</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#compilation-编译过程"><span class="nav-number">4.</span> <span class="nav-text">compilation 编译过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在-SingleEntryPlugin-里-调用addEntry"><span class="nav-number">4.1.</span> <span class="nav-text">在 SingleEntryPlugin 里 调用addEntry</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#addEntry"><span class="nav-number">4.2.</span> <span class="nav-text">addEntry</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#addModuleChain"><span class="nav-number">4.3.</span> <span class="nav-text">_addModuleChain</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建模块"><span class="nav-number">4.4.</span> <span class="nav-text">创建模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是-ModuleFactory（模块工厂）"><span class="nav-number">4.4.1.</span> <span class="nav-text">什么是 ModuleFactory（模块工厂）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#normalModuleFactory"><span class="nav-number">4.4.2.</span> <span class="nav-text">normalModuleFactory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MainTemplate-和-chunkTemplate"><span class="nav-number">4.4.3.</span> <span class="nav-text">MainTemplate 和 chunkTemplate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#createChunkAssets"><span class="nav-number">4.4.4.</span> <span class="nav-text">createChunkAssets</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -647,6 +856,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
 
   
 
