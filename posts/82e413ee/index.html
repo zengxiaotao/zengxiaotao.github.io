@@ -117,6 +117,7 @@
 <meta property="og:site_name" content="zengxiaotao&#39;s personal blog">
 <meta property="og:description" content="目录 什么是 compiler 和 compilation  compiler 启动过程  compilation 启动过程">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/100363-6ed0238d6508b9cd?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
 <meta property="og:image" content="http://pjidtibsr.bkt.clouddn.com/images/20181210145523.png">
 <meta property="og:image" content="http://pjidtibsr.bkt.clouddn.com/images/20181210151951.png">
 <meta property="og:image" content="http://pjidtibsr.bkt.clouddn.com/images/20181210152549.png">
@@ -132,11 +133,11 @@
 <meta property="og:image" content="http://pjidtibsr.bkt.clouddn.com/images/20181210183819.png">
 <meta property="og:image" content="http://pjidtibsr.bkt.clouddn.com/images/20181210213905.png">
 <meta property="og:image" content="http://pjidtibsr.bkt.clouddn.com/images/20181212232042.png">
-<meta property="og:updated_time" content="2018-12-13T08:43:46.868Z">
+<meta property="og:updated_time" content="2018-12-13T09:58:35.578Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="compiler  Compilation">
 <meta name="twitter:description" content="目录 什么是 compiler 和 compilation  compiler 启动过程  compilation 启动过程">
-<meta name="twitter:image" content="http://pjidtibsr.bkt.clouddn.com/images/20181210145523.png">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/100363-6ed0238d6508b9cd?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
 
 
 
@@ -409,7 +410,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-13 16:43:46" itemprop="dateModified" datetime="2018-12-13T16:43:46+08:00">2018-12-13</time>
+                <time title="修改时间：2018-12-13 17:58:35" itemprop="dateModified" datetime="2018-12-13T17:58:35+08:00">2018-12-13</time>
               
             
           </span>
@@ -451,16 +452,41 @@
 </li>
 </ol>
 <a id="more"></a>
-<h1 id="compiler-和-compilation-v"><a href="#compiler-和-compilation-v" class="headerlink" title="compiler 和 compilation v"></a>compiler 和 compilation v</h1><p>先贴一张图，来自 <code>webpack</code> 官方的解释</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/100363-6ed0238d6508b9cd?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="when you are writing a webpack config"></p>
+<h1 id="compiler-和-compilation"><a href="#compiler-和-compilation" class="headerlink" title="compiler 和 compilation"></a>compiler 和 compilation</h1><p>先贴一张图，来自 <code>webpack</code> 官方的解释</p>
 <blockquote>
 <p>原文链接 <a href="https://github.com/webpack/docs/wiki/how-to-write-a-plugin" target="_blank" rel="noopener">how to write a webpack plugin</a></p>
 </blockquote>
 <p><img src="http://pjidtibsr.bkt.clouddn.com/images/20181210145523.png" alt=""></p>
 <p>简单翻译一下</p>
-<p><code>compiler</code> 对象代表了一个 <code>webpack</code> 完整的配置环境，在 <code>webpack</code> 启动时构建，包括了所有的可操作的配置项，比如 <code>options</code> , <code>loaders</code> 和 <code>plugins</code>。</p>
+<p><code>compiler</code> 对象代表了一个 <code>webpack</code> 完整的配置环境，在 <code>webpack</code> 启动时构建，包括了所有的可操作的配置项，比如 <code>options</code> , <code>loaders</code> 和 <code>plugins</code>。在 webpack 的每个进程中只会创建一个对象。</p>
+<p><code>compiler</code> 一些有用的属性。</p>
+<ol>
+<li>options 我们通过配置文件或者命令行命令传入的属性。</li>
+<li>inputFileSystem, outputFileSystem。 webpack 的文件系统。默认就是 nodejs 的 <code>fs</code>。但是在 <code>watch</code> 模式下，<code>outputFileSystem</code> 会变成 内存输出对象。也就是，保存在内存中。这一部分可以看 <code>node/NodeEnvironmentPlugin</code>。在 <code>beforeRun</code> 阶段注入 <code>compiler</code>。</li>
+<li>todo <code>childCompiler</code></li>
+</ol>
 <p><code>compilation</code> 对象则代表了一次 <strong>单次构建</strong>。每次文件变更的时候，都会开始一次新的编译。<code>compilation</code> 会提供以下信息：模块资源，已编译的文件，改变的文件，以及监听的依赖。</p>
-<p>它们之间的关系是</p>
-<p>options –&gt; Compiler -&gt; Compilation</p>
+<p><code>compilation</code> 的一些概念</p>
+<ol>
+<li>modules: 解析后的模块</li>
+<li>chunks: 所有的 chunk</li>
+<li>assets: 所有要生成的文件</li>
+</ol>
+<h3 id="什么是-modules"><a href="#什么是-modules" class="headerlink" title="什么是 modules"></a>什么是 modules</h3><p>简单来说，就是一个 <code>dependency</code> 通过 <code>moduleFactory.create</code> 创建一个模块。<br><code>webpack</code> 认为一个 <code>entry</code> ，或者其任何所依赖模块就是一个 <code>dep</code>, 都会生成一个 <code>Dependency</code> 对象。</p>
+<p>那什么又是 <code>moduleFactory</code>。<br>由于存在不同 <code>Dependency</code> ，不同的 <code>Dependency</code> 生成的 <code>module</code> 也不相同。那么也必然存在不同的 <code>moduleFactory</code>。</p>
+<p>生成的 <code>modules</code> 是什么样的。</p>
+<p>每一个 <code>module</code> 内部都会有一个 <code>build</code> 方法。在 <code>build</code> 方法内会通过 <code>acorn</code> 解析源码，生成ast，保存在 <code>_source</code> 属性中，也会应用 <code>loaders</code>。</p>
+<h3 id="什么又是-chunk"><a href="#什么又是-chunk" class="headerlink" title="什么又是 chunk"></a>什么又是 chunk</h3><p><code>webpack</code> 中的 <code>chunk</code> 有两种，一种是在 <code>entry</code> 中定义的入口文件，会生成一整个 <code>chunk</code> ，另外一个就是 <code>动态引入(dynamic-import)</code> 引入的模块，也会生成一个 <code>chunk</code>。</p>
+<p>那么 <code>webpack</code> 是怎么生成一个 <code>chunk</code> 的。</p>
+<ol>
+<li>找到 <code>entry</code> ，每一个 <code>entry</code> 会新生成一个 <code>chunk</code>;</li>
+<li>分析每一个 <code>entry</code> 的依赖项 <code>module.dependencies</code> ，将这些加入对应的 <code>chunk</code>。</li>
+<li>如果某一个 <code>module</code> 是动态引入的，会根据这个 <code>module</code> 生成一个新的 <code>chunk</code>。</li>
+<li>遍历依赖树即可。</li>
+</ol>
+<p>因此，生成 <code>chunks</code> 必须是在依赖树构建完成之后。生成 <code>chunks</code> 后，就会进行一系列优化，排序等工作。</p>
+<h3 id="assets"><a href="#assets" class="headerlink" title="assets"></a>assets</h3><p><code>assets</code> 就不用说了，打包生成的文件。</p>
 <h1 id="compiler-启动过程"><a href="#compiler-启动过程" class="headerlink" title="compiler 启动过程"></a>compiler 启动过程</h1><blockquote>
 <p>源码地址 <a href="https://github.com/webpack/webpack/blob/master/lib/Compiler.js" target="_blank" rel="noopener">source</a></p>
 </blockquote>
@@ -587,15 +613,16 @@
 <ol start="2">
 <li>优化</li>
 </ol>
-<p>(1) <a href="https://medium.com/@songawee/long-term-caching-using-webpack-records-9ed9737d96f2" target="_blank" rel="noopener">https://medium.com/@songawee/long-term-caching-using-webpack-records-9ed9737d96f2</a><br>演示 records 的 demo</p>
-<p>(2) 设置 babel-loader?cacheDirectory=true</p>
-<p>(3) webpack-parallel-uglify-plugin</p>
-<h2 id="next"><a href="#next" class="headerlink" title="next"></a>next</h2><ol start="3">
+<p>(1) 设置 babel-loader?cacheDirectory=true</p>
+<p>(2) webpack-parallel-uglify-plugin</p>
+<p><a href="https://www.cnblogs.com/imwtr/p/7801973.html" target="_blank" rel="noopener">https://www.cnblogs.com/imwtr/p/7801973.html</a></p>
+<p>before-resolve</p>
+<ol>
 <li>新的 bach 工程怎么做的</li>
 </ol>
 <p><code>cat package.json | grep &quot;start&quot;</code> 可以看到是执行了 <code>./webpack/server.js</code></p>
 <p><code>server.js</code> 起了一个 <code>express</code> 服务器，使用了 <code>webpack-dev-middleware</code> 生成一个中间件，来监听文件的变化。</p>
-<p>tapable</p>
+<h3 id="next"><a href="#next" class="headerlink" title="next"></a>next</h3><p>tapable</p>
 
       
     </div>
@@ -786,7 +813,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#compiler-和-compilation-v"><span class="nav-number">2.</span> <span class="nav-text">compiler 和 compilation v</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#compiler-启动过程"><span class="nav-number">3.</span> <span class="nav-text">compiler 启动过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#compiler-全部生命周期"><span class="nav-number">3.1.</span> <span class="nav-text">compiler 全部生命周期</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#compilation-编译过程"><span class="nav-number">4.</span> <span class="nav-text">compilation 编译过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在-SingleEntryPlugin-里-调用addEntry"><span class="nav-number">4.1.</span> <span class="nav-text">在 SingleEntryPlugin 里 调用addEntry</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#addEntry"><span class="nav-number">4.2.</span> <span class="nav-text">addEntry</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#addModuleChain"><span class="nav-number">4.3.</span> <span class="nav-text">_addModuleChain</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建模块"><span class="nav-number">4.4.</span> <span class="nav-text">创建模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是-ModuleFactory（模块工厂）"><span class="nav-number">4.4.1.</span> <span class="nav-text">什么是 ModuleFactory（模块工厂）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#buildModule"><span class="nav-number">4.4.2.</span> <span class="nav-text">buildModule</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#doBuild"><span class="nav-number">4.4.3.</span> <span class="nav-text">doBuild</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理依赖关系-processModuleDependencies"><span class="nav-number">4.4.4.</span> <span class="nav-text">处理依赖关系 processModuleDependencies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#给处理好的依赖关系添加模块-addModuleDependencies"><span class="nav-number">4.4.5.</span> <span class="nav-text">给处理好的依赖关系添加模块 addModuleDependencies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#finish"><span class="nav-number">4.4.6.</span> <span class="nav-text">finish</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#seal"><span class="nav-number">4.4.7.</span> <span class="nav-text">seal</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打包输出"><span class="nav-number">4.5.</span> <span class="nav-text">打包输出</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#createChunkAssets"><span class="nav-number">4.5.1.</span> <span class="nav-text">createChunkAssets</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q-amp-amp-A"><span class="nav-number">4.6.</span> <span class="nav-text">Q&amp;&amp;A</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#next"><span class="nav-number">4.7.</span> <span class="nav-text">next</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#compiler-和-compilation"><span class="nav-number">2.</span> <span class="nav-text">compiler 和 compilation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是-modules"><span class="nav-number">2.0.1.</span> <span class="nav-text">什么是 modules</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么又是-chunk"><span class="nav-number">2.0.2.</span> <span class="nav-text">什么又是 chunk</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#assets"><span class="nav-number">2.0.3.</span> <span class="nav-text">assets</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#compiler-启动过程"><span class="nav-number">3.</span> <span class="nav-text">compiler 启动过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#compiler-全部生命周期"><span class="nav-number">3.1.</span> <span class="nav-text">compiler 全部生命周期</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#compilation-编译过程"><span class="nav-number">4.</span> <span class="nav-text">compilation 编译过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在-SingleEntryPlugin-里-调用addEntry"><span class="nav-number">4.1.</span> <span class="nav-text">在 SingleEntryPlugin 里 调用addEntry</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#addEntry"><span class="nav-number">4.2.</span> <span class="nav-text">addEntry</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#addModuleChain"><span class="nav-number">4.3.</span> <span class="nav-text">_addModuleChain</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建模块"><span class="nav-number">4.4.</span> <span class="nav-text">创建模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是-ModuleFactory（模块工厂）"><span class="nav-number">4.4.1.</span> <span class="nav-text">什么是 ModuleFactory（模块工厂）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#buildModule"><span class="nav-number">4.4.2.</span> <span class="nav-text">buildModule</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#doBuild"><span class="nav-number">4.4.3.</span> <span class="nav-text">doBuild</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理依赖关系-processModuleDependencies"><span class="nav-number">4.4.4.</span> <span class="nav-text">处理依赖关系 processModuleDependencies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#给处理好的依赖关系添加模块-addModuleDependencies"><span class="nav-number">4.4.5.</span> <span class="nav-text">给处理好的依赖关系添加模块 addModuleDependencies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#finish"><span class="nav-number">4.4.6.</span> <span class="nav-text">finish</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#seal"><span class="nav-number">4.4.7.</span> <span class="nav-text">seal</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打包输出"><span class="nav-number">4.5.</span> <span class="nav-text">打包输出</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#createChunkAssets"><span class="nav-number">4.5.1.</span> <span class="nav-text">createChunkAssets</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q-amp-amp-A"><span class="nav-number">4.6.</span> <span class="nav-text">Q&amp;&amp;A</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#next"><span class="nav-number">4.6.1.</span> <span class="nav-text">next</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
