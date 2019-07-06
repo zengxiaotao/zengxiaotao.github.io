@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[koa源码1]]></title>
+    <url>%2Fposts%2Fbea7705e%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[在vscode里调试webpack]]></title>
     <url>%2Fposts%2F6e358f78%2F</url>
     <content type="text"><![CDATA[如何在 vscode 里调试 webpack如果你想了解 webpack 的执行过程，或者调试自己的 webpack plugin 或者 loader。得益于 vscode 强大的 debugger 工具，你只需添加一些配置项即可。 全局添加 command + , 进入偏好设置。 打开 setting.json, 将以下配置项粘贴到配置文件中。 12345678"launch": &#123; "configurations": [&#123; "type": "node", "request": "launch", "name": "Launch Webpack", "program": "$&#123;workspaceFolder&#125;/node_modules/webpack/bin/webpack.js" &#125;]&#125; 之后打开 vscode 的 debugger 工具，就能看到 Launch Webpack 选项了。 添加参数理论上，添加上面的配置就足够了。webpack 会自动去寻找项目根目录下的 webpack.config.js 文件。如果你想指定配置文件，就需要添加对应的参数，参数和 webpack 提供的 cli 参数含义相同。 123"args": [ "--config": "./webpack.config.prod.js"] 添加环境变量添加环境有两种方式，指定一个环境变量文件或者一个配置对象即可。 1"envFile": "$&#123;workspaceFolder&#125;/somedir/filename.env" env 的文件内容就是一段文本。 12NODE_ENV=productionCACHE_PATH=.lib_cache 或者 1234"env": &#123; "NODE_ENV": "production", "CACHE_PATH": ".cache"&#125; 本地添加就是将调试配置添加到当前文件夹。 添加配置 -&gt; node.js ，配置项同上。之后在当前目录下就会生成一个 .vscode 文件夹了。 debugging的使用可以参考官方 debugging文档 完。 附上一份完整的配置。 123456789101112"launch": &#123; "configurations": [&#123; "type": "node", "request": "launch", "name": "Launch Webpack", "program": "$&#123;workspaceFolder&#125;/node_modules/webpack/bin/webpack.js", "args": [ "--config", "$&#123;workspaceFolder&#125;/webpack.config.js" ], "env" : &#123; "NODE_ENV" : "production" &#125; &#125;]&#125;]]></content>
