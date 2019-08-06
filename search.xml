@@ -1,12 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[查看页面的内存]]></title>
+    <url>%2Fposts%2F8366dd6%2F</url>
+    <content type="text"><![CDATA[Performance 允许网页访问某些函数来测量网页和Web应用程序的性能。通过 window.performance 可以查看当前网页的 memory , timing 等一些页面指标。 memory打开控制台，输入 window.performance.memory 三个属性的含义分别是: jsHeapSizeLimit: 堆内存大小限制，单位是 byte。2197815296 / 1024 / 1024 / 1024 = 2.0468G totalJSHeapSize: 总的堆内存大小，单位是 byte。 11204572 / 1024 / 1024 = 10.6855M usedJSHeapSize: 已使用的堆内存大小，单位是 byte。 10790028 / 1024 / 1024 = 10.2901M 有了这几个内存信息，就可以实现一些高级一点的功能。比如内存异常的报警，日志上报等。 demo1234&lt;body&gt; &lt;div class="used"&gt;&lt;/div&gt; &lt;div class="total"&gt;&lt;/div&gt;&lt;/body&gt; 1234567891011function init() &#123; requestAnimationFrame(function cal()&#123; const memory = window.performance.memory; const &#123; totalJSHeapSize, usedJSHeapSize &#125; = memory; document.querySelector('.used').textContent = usedJSHeapSize; document.querySelector('.total').textContent = totalJSHeapSize; requestAnimationFrame(cal); &#125;) &#125; window.addEventListener('DOMContentLoaded', init); 但是结果并不是跟我们想的一样 这几个参数都没有变过。 这是因为 chrome 的安全策略，这些内部信息并没有暴露给外部，想要实时查看的话，只能在启动 chrome 时添加 --enable-precise-memory-info 参数。 --enable-precise-memory-info 关闭当前已开启的 chrome 窗口 在控制台通过以下命令打开 chrome /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --enable-precise-memory-info 这个时候就可以看见这几个属性在实时变化了。 总结 通过 window.performance.memory 可以查看网页的内存信息。 当前想通过 js 获取内存信息，首先需要是 chrome, 而且需要开启 --enable-precise-memory-info。 完]]></content>
+      <tags>
+        <tag>性能</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[cookie]]></title>
     <url>%2Fposts%2F8ae0ba66%2F</url>
     <content type="text"><![CDATA[cookie 是服务器存入浏览器的数据，用于浏览器和服务器之间进行信息交互。 概念用法其实很简单，当服务器需要在页面里放入一些数据时，就可以在响应头里添加 Set-Cookie 属性，浏览器收到响应后就会保存下这些 cookie , 之后的请求中就会携带这些 cookie; 1Set-cookie: &lt;key&gt;=&lt;value&gt; cookie 的一些属性我们用的最多的,包括在 network 面板和 document.cookie 看到的都是 key-value 的形式，但 cookie 还能通过其他一些属性进行更严格的控制。 Max-age 和 Expires看到这两个属性，就应该想到 http缓存 那些东西。Max-Age 和 Expires 给 cookie 加上一个过期时间。 如果 Set-cookie 里没有这两个属性，那么这时候的 cookie 就叫做 会话cookie 。它会随着浏览器的关闭而清除。 Expires 和 Max-Age 同响应头类似，指定一个 绝对时间 或者 以毫秒为单位的相对过期时间。当 cookie 过期后，就会被浏览器清除。 Secure当一个 cookie 设置了 Secure 属性，也就意味着这个 cookie 只能在 https 中传输。 HttpOnly第一眼看见这个属性，可能会疑惑的认为这个属性时控制只能在 http 中进行传输。其实不是，它是限定 cookie 只能被用于传输至服务端。当我们使用 document.cookie 时，无法获取到设置了 HttpOnly 的 cookie 值。 DomainDomain 属性用来设置 cookie 所在的域，如果不指定，默认为当前域，不包含子域名。但如果指定了 Domain 属性，则会 包含子域名。 PathPath 和 Domain 不同，Domain 限制的域名，而 Path 限定了一个域名的哪些路径可以访问到这个 cookie。 1Set-Cookie: name=value; path=/user; 只有访问 /user 路径才会携带这个 cookie 。 todokoa demo 完]]></content>
       <tags>
         <tag>web</tag>
         <tag>http</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[koa源码(一)]]></title>
+    <url>%2Fposts%2Fbea7705e%2F</url>
+    <content type="text"><![CDATA[首先 koa 是什么 koa是基于Node.js的下一代 web框架 koa 和 express 相比，体积更轻。koa 的 v1 版本中，使用的是 generator 函数来处理复杂的嵌套回调的调用，而在 v2 版本中使用了更为简洁的 async await 语法来处理。今天分析的源码也是基于 v2 版本的。 洋葱圈模型听过 koa ，洋葱圈模型肯定也听过。下图就反映了一个 请求 从 请求 到 响应的整个过程。从一个中间件进入，依次进入后面的中间件，最后在从这个中间件出来。 1234567891011121314151617async A() &#123; A1; await next(); A2;&#125;async B() &#123; B1; await next(); B2;&#125;async C() &#123; C1; await next(); C2;&#125; 在一个中间件的里遇到 next, 请求将会交给下一个中间件处理。下一个中间件处理完，则继续回到之前的中间件，因此在 koa 里，上面代码的执行顺序就是 A1 - B1 - C1 - C2 - B2 - A2; 洋葱圈模型的实现首先先创建一个 app; 12const Koa = require('koa');const app = new Koa(); 在 koa 里，通过 app.use(middleware) 的方式添加中间件。 use 做的事情只是单纯的将 中间件 推入到一个数组内 1this.middleware.push(fn); 之后 app.listen 就创建了一个服务器。 12345listen(...args) &#123; debug('listen'); const server = http.createServer(this.callback()); return server.listen(...args);&#125; listen 方法内，同样是调用的 http.createServer ，只是这个函数句柄是 koa 通过 this.callback() 生成的。所以再看看 callback 方法。 123456789callback() &#123; // koa-compose const fn = compose(this.middleware); const handleRequest = (req, res) =&gt; &#123; const ctx = this.createContext(req, res); return this.handleRequest(ctx, fn); &#125;; return handleRequest; &#125; callback 返回了我们需要的函数，函数内部由 this.handleRequest 来响应请求。 12345678handleRequest(ctx, fnMiddleware) &#123; const res = ctx.res; res.statusCode = 404; const onerror = err =&gt; ctx.onerror(err); const handleResponse = () =&gt; respond(ctx); onFinished(res, onerror); return fnMiddleware(ctx).then(handleResponse).catch(onerror); &#125; 所以，handleRequest 内部其实是通过之前生成 fnMiddleware 来处理请求。传入 koa 内部合成的 ctx; koa-compose因此，理解 koa 的洋葱圈模型，重点是理解 koa-compose; 贴一下精简过的 koa-compose 的代码 123456789101112131415161718function compose (middleware) &#123; return function (context, next) &#123; let index = -1 return dispatch(0) function dispatch (i) &#123; if (i &lt;= index) return Promise.reject(new Error('next() called multiple times')) index = i let fn = middleware[i] if (i === middleware.length) fn = next if (!fn) return Promise.resolve() try &#123; return Promise.resolve(fn(context, dispatch.bind(null, i + 1))); &#125; catch (err) &#123; return Promise.reject(err) &#125; &#125; &#125;&#125; 通过 koa-compose 生成的函数 fnMiddleware 传入 ctx 。函数内部直接返回了 dispatch(0)。每一次 dispatch 函数的执行都是执行传入的索引对应的中间件。 12let fn = middleware[i]fn(context, dispatch.bind(null, i + 1)); 而洋葱圈的关键就是将 dispatch.bind(null, i + 1) 作为第 i 个中间件的 next 参数。这样在一个中间件的内部调用 next 方法时，实际上会触发下一个中间件的执行。 当执行完最后一个中间件的时候，fn(context, dispatch.bind(null, i + 1)) 返回值会被 resolved ，然后被上一个中间件的 await 捕捉到。]]></content>
+      <tags>
+        <tag>源码阅读</tag>
+        <tag>node</tag>
+        <tag>koa</tag>
       </tags>
   </entry>
   <entry>
